@@ -9,15 +9,38 @@
 
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label>연결포트:</Label>
-                <ComboBox x:Name="PortCombo" Width="100" 
 
-                          SelectionChanged="PortCombo_SelectionChanged">
-                    
-                </ComboBox>
-            </StackPanel>
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" 
+                            Grid.Column="0"
+                            HorizontalAlignment="Right">
+                    <Label>연결포트:</Label>
+                    <ComboBox x:Name="PortCombo" Width="100" 
+                              DropDownOpened="PortCombo_DropDownOpened"
+                              SelectionChanged="PortCombo_SelectionChanged">
 
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" 
+                            Grid.Column="1"
+                            Margin="10 0" HorizontalAlignment="Right">
+                    <Button x:Name="ConnectButton" 
+                            Margin="5 0" Width="70"
+                            Click="ConnectButton_Click">연결하기</Button>
+                    <Button x:Name="CancelButton" 
+                            Margin="5 0" Width="70"
+                            Click="CancelButton_Click">취소하기</Button>
+                </StackPanel>
+                
+            </Grid>
+
+            <!-- 그룹 박스 -->
+            
             <GroupBox Margin="10" Width="Auto" Height="Auto">
                 <GroupBox.Header>
                     포트설정
