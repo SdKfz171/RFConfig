@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RFConfig.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace RFConfig
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ConnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new SettingPage());
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

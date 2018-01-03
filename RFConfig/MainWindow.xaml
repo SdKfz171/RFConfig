@@ -5,8 +5,79 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RFConfig"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="RFConfigration" 
+        Height="350" Width="525"
+        MinHeight="350" MinWidth="525">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0.8*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="MainMenu" 
+                    Grid.Column="0" Width="40">
+            <StackPanel.Background>
+                <SolidColorBrush Opacity="0.5" Color="LightGray"/>
+            </StackPanel.Background>
+            <Button x:Name="HamburgerButton" 
+                    Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                    FontSize="20" FontFamily="Segoe MDL2 Assets" 
+                    Content="&#xE700;" HorizontalContentAlignment="Center"
+                    Background="Transparent" BorderThickness="0"
+                    Click="HamburgerButton_Click">
+                
+            </Button>
+            
+            <Button x:Name="ConnectButton" 
+                    Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                    FontSize="20" FontFamily="Segoe MDL2 Assets" 
+                    Content="&#xED5C;" HorizontalContentAlignment="Center"
+                    Background="Transparent" BorderThickness="0"
+                    Click="ConnectButton_Click">
+                
+            </Button>
+
+            <Button x:Name="SendButton" 
+                    Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                    FontSize="20" FontFamily="Segoe MDL2 Assets" 
+                    Content="&#xE724;" HorizontalContentAlignment="Center"
+                    Background="Transparent" BorderThickness="0"
+                    Click="SendButton_Click">
+
+            </Button>
+        </StackPanel>
         
+        <Frame x:Name="MainFrame" 
+               Grid.Column="1">
+            
+        </Frame>
     </Grid>
 </Window>
+
+
+<!--<Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter Property="Background" Value="Transparent" />
+                                -->
+<!--<Setter Property="Opacity" Value="1.0" />-->
+<!--
+                            </Trigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.2" To="1"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.2" To="0.2"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>-->
