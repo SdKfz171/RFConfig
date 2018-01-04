@@ -160,10 +160,14 @@ namespace RFConfig.Views
             Debug.WriteLine("Clicked");
 
             string[] AvailablePorts = SerialPort.GetPortNames();
-            
+
+            PortCombo.Items.Clear();
+
             foreach(var data in AvailablePorts)
             {
                 Debug.WriteLine("Available Port : " + data);
+
+                PortCombo.Items.Add(data);
             }
         }
 
