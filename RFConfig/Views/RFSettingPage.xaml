@@ -1,0 +1,116 @@
+﻿<Page x:Class="RFConfig.Views.RFSettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RFConfig.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="525"
+      Title="RFSettingPage" Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0">
+                    <GroupBox.Header>
+                        <Label FontSize="15">RF Mode</Label>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <RadioButton x:Name="R1" GroupName="RFModeGrp" FontWeight="Bold">Modulated Tx</RadioButton>
+                        <RadioButton x:Name="R2" GroupName="RFModeGrp" FontWeight="Bold">Unmodulated Tx</RadioButton>
+                        <RadioButton x:Name="R3" GroupName="RFModeGrp" FontWeight="Bold">Continuous Rx</RadioButton>
+                        <RadioButton x:Name="R4" GroupName="RFModeGrp" FontWeight="Bold">Normal</RadioButton>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="SendButton" 
+                                    Grid.Column="0" Margin="5 5" 
+                                    Click="SendButton_Click">전송하기</Button>
+                            <Button x:Name="StopButton" 
+                                    Grid.Column="1" Margin="5 5" 
+                                    Click="StopButton_Click">멈추기</Button>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1">
+                    <GroupBox.Header>
+                        <Label FontSize="15">Carrier Frequency</Label>
+                    </GroupBox.Header>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" Margin="5 5">
+                            <ComboBoxItem>0 : 917.3 Mhz</ComboBoxItem>
+                            <ComboBoxItem>1 : 917.9 Mhz</ComboBoxItem>
+                            <ComboBoxItem>2 : 918.5 Mhz</ComboBoxItem>
+                            <ComboBoxItem>3 : 919.1 Mhz</ComboBoxItem>
+                            <ComboBoxItem>4 : 919.7 Mhz</ComboBoxItem>
+                            <ComboBoxItem>5 : 920.3 Mhz</ComboBoxItem>
+                            <ComboBoxItem>6 : 920.7 Mhz</ComboBoxItem>
+                            <ComboBoxItem>7 : 920.9 Mhz</ComboBoxItem>
+                            <ComboBoxItem>8 : 921.1 Mhz</ComboBoxItem>
+                            <ComboBoxItem>9 : 921.3 Mhz</ComboBoxItem>
+                            <ComboBoxItem>10 : 921.5 Mhz</ComboBoxItem>
+                            <ComboBoxItem>11 : 921.7 Mhz</ComboBoxItem>
+                            <ComboBoxItem>12 : 921.9 Mhz</ComboBoxItem>
+                            <ComboBoxItem>13 : 922.1 Mhz</ComboBoxItem>
+                            <ComboBoxItem>14 : 922.3 Mhz</ComboBoxItem>
+                            <ComboBoxItem>15 : 922.5 Mhz</ComboBoxItem>
+                            <ComboBoxItem>16 : 922.7 Mhz</ComboBoxItem>
+                            <ComboBoxItem>17 : 922.9 Mhz</ComboBoxItem>
+                            <ComboBoxItem>18 : 923.1 Mhz</ComboBoxItem>
+                            <ComboBoxItem>19 : 923.3 Mhz</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="CFSendButton" Grid.Column="1" Margin="5 5" Click="CFSendButton_Click">전송하기</Button>
+                    </Grid>
+                    
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <GroupBox>
+                <GroupBox.Header>
+                    <Label >Recieved Data</Label>
+                </GroupBox.Header>
+                <TextBlock x:Name="OutputTextBlock" 
+                           Padding="2 0" 
+                           ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                           ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                           TextWrapping="Wrap">
+                    
+                </TextBlock>
+            </GroupBox>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="InputTextBox" Grid.Column="0" KeyDown="InputTextBox_KeyDown"></TextBox>
+                <Button x:Name="DefaultSendButton" Grid.Column="1" Click="DefaultSendButton_Click">송신</Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -32,11 +32,11 @@ namespace RFConfig.Views
         public Handshake _FlowControl { get; set; }
 
 
-        public SettingPage()
+        public SettingPage(SerialPort serial)
         {
             InitializeComponent();
 
-            serial = new SerialPort();
+            this.serial = serial;
         }
 
         private void SerialInit()
@@ -51,19 +51,28 @@ namespace RFConfig.Views
                 serial.StopBits = _StopBits;
                 serial.Handshake = _FlowControl;
                 serial.Open();
+
+                Debug.WriteLine("포트열기 성공!");
+
+                MainWindow.flag = true;
+
+                serial.DataReceived += Serial_DataReceived;
+
+                ((Frame)this.Parent).Navigate(new RFSettingPage());
             }
             catch
             {
                 Debug.WriteLine("포트열기 실패!");
-            }
-            
-            serial.DataReceived += Serial_DataReceived;
-            
+
+                MainWindow.flag = false;
+            }   
         }
 
         private void Serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            
+            string recievedData;
+            recievedData = serial.ReadExisting();
+            Debug.WriteLine("받은 데이터 : " + recievedData);
         }
 
         private void PortCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -151,6 +160,7 @@ namespace RFConfig.Views
             Debug.WriteLine("Clicked");
 
             string[] AvailablePorts = SerialPort.GetPortNames();
+            
             foreach(var data in AvailablePorts)
             {
                 Debug.WriteLine("Available Port : " + data);
