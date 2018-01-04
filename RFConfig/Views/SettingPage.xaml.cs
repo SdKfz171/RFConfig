@@ -29,6 +29,7 @@ namespace RFConfig.Views
         public int _DataBits { get; set; }
         public Parity _Parity { get; set; }
         public StopBits _StopBits { get; set; }
+        public Handshake _FlowControl { get; set; }
 
 
         public SettingPage()
@@ -40,7 +41,7 @@ namespace RFConfig.Views
 
         private void SerialInit()
         {
-            // string[] AvailablePorts = SerialPort.GetPortNames();
+
             try
             {
                 serial.PortName = _PortName;
@@ -48,10 +49,12 @@ namespace RFConfig.Views
                 serial.DataBits = _DataBits;
                 serial.Parity = _Parity;
                 serial.StopBits = _StopBits;
+                serial.Handshake = _FlowControl;
+                serial.Open();
             }
             catch
             {
-
+                Debug.WriteLine("포트열기 실패!");
             }
             
             serial.DataReceived += Serial_DataReceived;
@@ -71,11 +74,13 @@ namespace RFConfig.Views
         private void BaudRateCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _BaudRate = int.Parse(((ComboBoxItem)BaudRateCombo.SelectedValue).Content.ToString());
+            Debug.WriteLine("_BaudRate : " + _BaudRate);
         }
 
         private void DataBitsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _DataBits = int.Parse(((ComboBoxItem)DataBitsCombo.SelectedValue).Content.ToString());
+            Debug.WriteLine("_DataBits : " + _DataBits);
         }
 
         private void ParityCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,36 +89,77 @@ namespace RFConfig.Views
             {
                 case 0:
                     _Parity = Parity.None;
+                    Debug.WriteLine("_Parity None");
                     break;
 
                 case 1:
                     _Parity = Parity.Odd;
+                    Debug.WriteLine("_Parity Odd");
                     break;
 
                 case 2:
                     _Parity = Parity.Even;
+                    Debug.WriteLine("_Parity Even");
                     break;
             }
         }
 
         private void StopBitsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            switch (StopBitsCombo.SelectedIndex)
+            {
+                case 0:
+                    _StopBits = StopBits.One;
+                    Debug.WriteLine("_StopBits One");
+                    break;
 
+                case 1:
+                    _StopBits = StopBits.OnePointFive;
+                    Debug.WriteLine("_StopBits OnePointFive");
+                    break;
+
+                case 2:
+                    _StopBits = StopBits.Two;
+                    Debug.WriteLine("_StopBits Two");
+                    break;
+            }
         }
 
         private void FlowCtrlCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            switch (FlowCtrlCombo.SelectedIndex)
+            {
+                case 0:
+                    _FlowControl = Handshake.None;
+                    Debug.WriteLine("_FlowControl None");
+                    break;
 
+                case 1:
+                    _FlowControl = Handshake.XOnXOff;
+                    Debug.WriteLine("_FlowControl XonXoff");
+                    break;
+
+                case 2:
+                    _FlowControl = Handshake.RequestToSend;
+                    Debug.WriteLine("_FlowControl RTS");
+                    break;
+            }
         }
 
         private void PortCombo_DropDownOpened(object sender, EventArgs e)
         {
             Debug.WriteLine("Clicked");
+
+            string[] AvailablePorts = SerialPort.GetPortNames();
+            foreach(var data in AvailablePorts)
+            {
+                Debug.WriteLine("Available Port : " + data);
+            }
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SerialInit();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
