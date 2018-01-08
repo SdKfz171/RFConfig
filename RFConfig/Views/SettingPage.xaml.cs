@@ -31,14 +31,12 @@ namespace RFConfig.Views
         public StopBits _StopBits { get; set; }
         public Handshake _FlowControl { get; set; }
 
-
         public SettingPage()
         {
 
             InitializeComponent();
 
             serial = new SerialPort();
-
 
             PortCombo.Items.Insert(0, MainWindow.ComboBoxItem);
             PortCombo.SelectedIndex = 0;
@@ -51,6 +49,7 @@ namespace RFConfig.Views
 
         public SettingPage(SerialPort serial)
         {
+
 
             InitializeComponent();
 
@@ -83,6 +82,7 @@ namespace RFConfig.Views
                 MainWindow.ComboBoxItem = (string)PortCombo.SelectedItem;
 
                 Debug.WriteLine("포트열기 성공!");
+
                 ////////////////////////////////////////////////////////
 
                 ((MainWindow)App.Current.MainWindow).SendButton.Background = MainWindow.DarkGray;

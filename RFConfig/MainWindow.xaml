@@ -9,7 +9,7 @@
         Height="350" Width="525"
         MinHeight="350" MinWidth="525"
         MaxHeight="450" MaxWidth="625"
-        Background="White">
+        Background="White" Icon="Assets/RF_1.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -48,7 +48,7 @@
                         </Grid.ColumnDefinitions>
                         <Rectangle Margin="7 10">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="C:\Users\DELL\Source\Repos\RFConfig_Final_\RFConfig\TranspE700.png"/>
+                                <ImageBrush ImageSource="/Assets/TranspE700.png"/>
                             </Rectangle.Fill>
                         </Rectangle>
                     </Grid>
@@ -70,7 +70,7 @@
                         </Grid.ColumnDefinitions>
                         <Rectangle Margin="7 7">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="C:\Users\DELL\Source\Repos\RFConfig_Final_\RFConfig\TranspConnect.png"/>
+                                <ImageBrush ImageSource="Assets/TranspConnect.png"/>
                             </Rectangle.Fill>
                         </Rectangle>
                     </Grid>
@@ -92,7 +92,7 @@
                         </Grid.ColumnDefinitions>
                         <Rectangle Margin="6 5">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="C:\Users\DELL\Source\Repos\RFConfig_Final_\RFConfig\TranspSend.png"/>
+                                <ImageBrush ImageSource="Assets/TranspSend.png"/>
                             </Rectangle.Fill>
                         </Rectangle>
                     </Grid>

@@ -1,4 +1,4 @@
-﻿using RFConfig.Controllers;
+﻿
 using RFConfig.Views;
 using System;
 using System.Collections.Generic;
@@ -34,8 +34,6 @@ namespace RFConfig
 
         public static SerialPort _Serial;
 
-        public PageIndex pageIndex;
-
         public static SolidColorBrush LightGray = new SolidColorBrush { Color = Colors.Transparent, Opacity = 0.5 };
         public static SolidColorBrush DarkGray = new SolidColorBrush { Color = Colors.DarkGray, Opacity = 0.5 };
 
@@ -46,10 +44,6 @@ namespace RFConfig
             InitializeComponent();
 
             _Serial = new SerialPort();
-
-            pageIndex = new PageIndex();
-
-
 
             SettingPage settingPage = new SettingPage();
 

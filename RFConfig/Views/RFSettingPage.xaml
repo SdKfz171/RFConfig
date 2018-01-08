@@ -96,6 +96,7 @@
                         </Grid.ColumnDefinitions>
                         <ComboBox x:Name="ChannelCombo" 
                                   Grid.Column="0" Margin="5 5"
+                                  HorizontalContentAlignment="Center"
                                   SelectionChanged="ChannelCombo_SelectionChanged">
                             <ComboBox.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="White"/>

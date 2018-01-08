@@ -21,6 +21,7 @@
                             HorizontalAlignment="Right">
                     <Label>연결포트:</Label>
                     <ComboBox x:Name="PortCombo" Width="100" 
+                              HorizontalContentAlignment="Center"
                               DropDownOpened="PortCombo_DropDownOpened"
                               SelectionChanged="PortCombo_SelectionChanged">
 
@@ -71,6 +72,7 @@
                     <ComboBox x:Name="BaudRateCombo" 
                               Grid.Column="1" Grid.Row="0"
                               Width="100" Margin="0 5" HorizontalAlignment="Left"
+                              HorizontalContentAlignment="Center"
                               SelectionChanged="BaudRateCombo_SelectionChanged">
                         <ComboBoxItem>1200</ComboBoxItem>
                         <ComboBoxItem>2400</ComboBoxItem>
@@ -88,6 +90,7 @@
                     <ComboBox x:Name="DataBitsCombo"
                               Grid.Column="1" Grid.Row="1"
                               Width="100" Margin="0 5" HorizontalAlignment="Left"
+                              HorizontalContentAlignment="Center"
                               SelectionChanged="DataBitsCombo_SelectionChanged">
                         <ComboBoxItem>5</ComboBoxItem>
                         <ComboBoxItem>6</ComboBoxItem>
@@ -98,6 +101,7 @@
                     <ComboBox x:Name="ParityCombo" 
                               Grid.Column="1" Grid.Row="2"
                               Width="100" Margin="0 5" HorizontalAlignment="Left"
+                              HorizontalContentAlignment="Center"
                               SelectionChanged="ParityCombo_SelectionChanged">
                         <ComboBoxItem>None</ComboBoxItem>
                         <ComboBoxItem>Odd</ComboBoxItem>
@@ -107,6 +111,7 @@
                     <ComboBox x:Name="StopBitsCombo" 
                               Grid.Column="1" Grid.Row="3"
                               Width="100" Margin="0 5" HorizontalAlignment="Left"
+                              HorizontalContentAlignment="Center"
                               SelectionChanged="StopBitsCombo_SelectionChanged">
                         <ComboBoxItem>1</ComboBoxItem>
                         <ComboBoxItem>1.5</ComboBoxItem>
@@ -116,6 +121,7 @@
                     <ComboBox x:Name="FlowCtrlCombo" 
                               Grid.Column="1" Grid.Row="4"
                               Width="100" Margin="0 5" HorizontalAlignment="Left"
+                              HorizontalContentAlignment="Center"
                               SelectionChanged="FlowCtrlCombo_SelectionChanged">
                         <ComboBoxItem>None</ComboBoxItem>
                         <ComboBoxItem>Xon/Xoff</ComboBoxItem>
