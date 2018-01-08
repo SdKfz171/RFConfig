@@ -126,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="E700.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="E724.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -146,6 +146,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TranspConnect.png" />
+    <Resource Include="TranspE700.png" />
+    <Resource Include="TranspSend.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

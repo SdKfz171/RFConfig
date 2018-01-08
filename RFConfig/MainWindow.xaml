@@ -34,32 +34,69 @@
             </Grid.Background>
             <Button x:Name="HamburgerButton"
                     Grid.Column="0" Grid.Row="0"
-                    Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                    FontSize="20" FontFamily="Segoe MDL2 Assets" 
-                    Content="&#xE700;" HorizontalContentAlignment="Center"
+                    Margin="0" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
                     Background="Transparent" BorderThickness="0"
                     Click="HamburgerButton_Click">
-                
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Margin="7 10">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="C:\Users\DELL\Source\Repos\RFConfig_Final_\RFConfig\TranspE700.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                </Button.Content>
             </Button>
             
             <Button x:Name="ConnectButton" 
                     Grid.Column="0" Grid.Row="1"
-                    Margin="0 5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                    FontSize="20" FontFamily="Segoe MDL2 Assets" 
-                    Content="&#xED5C;" HorizontalContentAlignment="Center"
+                    Margin="0 5" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                    VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                     Background="Transparent" BorderThickness="0"
                     Click="ConnectButton_Click">
-                
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Margin="7 7">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="C:\Users\DELL\Source\Repos\RFConfig_Final_\RFConfig\TranspConnect.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                </Button.Content>
             </Button>
 
             <Button x:Name="SendButton"
                     Grid.Column="0" Grid.Row="2"
-                    Margin="0 5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                    FontSize="20" FontFamily="Segoe MDL2 Assets" 
-                    Content="&#xE724;" HorizontalContentAlignment="Center"
+                    Margin="0 5" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                    VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                     Background="Transparent" BorderThickness="0"
                     Click="SendButton_Click">
-
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Margin="6 5">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="C:\Users\DELL\Source\Repos\RFConfig_Final_\RFConfig\TranspSend.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                </Button.Content>
             </Button>
 
           <Label x:Name="ConnectLabel" 
