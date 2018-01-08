@@ -14,6 +14,6 @@ namespace RFConfig
     /// </summary>
     public partial class App : Application
     {
-        
+        public static string SavedData = "";
     }
 }

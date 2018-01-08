@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       d:DesignHeight="350" d:DesignWidth="525"
-      Title="SettingPage" Background="White">
+      Title="SettingPage" Background="White"
+      Unloaded="Page_Unloaded">
 
     <Grid>
         <StackPanel>

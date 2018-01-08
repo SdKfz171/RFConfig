@@ -1,6 +1,8 @@
-﻿using RFConfig.Views;
+﻿using RFConfig.Controllers;
+using RFConfig.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -23,9 +25,21 @@ namespace RFConfig
     /// </summary>
     public partial class MainWindow : Window
     {
-        public SerialPort _Serial;
+        public static string ComboBoxItem = "";
 
-        public static bool flag;
+        Window StandardWindow = Application.Current.MainWindow;
+
+        SettingPage settingPage;
+        RFSettingPage rFSettingPage;
+
+        public static SerialPort _Serial;
+
+        public PageIndex pageIndex;
+
+        public static SolidColorBrush LightGray = new SolidColorBrush { Color = Colors.Transparent, Opacity = 0.5 };
+        public static SolidColorBrush DarkGray = new SolidColorBrush { Color = Colors.DarkGray, Opacity = 0.5 };
+
+        //#FFD3D3D3
 
         public MainWindow()
         {
@@ -33,32 +47,64 @@ namespace RFConfig
 
             _Serial = new SerialPort();
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Start();
+            pageIndex = new PageIndex();
+
+
+
+            SettingPage settingPage = new SettingPage();
+
+            MainFrame.Navigate(settingPage);
+
+            ConnectButton.Background = DarkGray;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                //_Serial.RE
-            }
-        }
+
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ConnectLabel.Visibility == Visibility.Collapsed)
+            {
+                ConnectLabel.Visibility = Visibility.Visible;
+                SendLabel.Visibility = Visibility.Visible;
 
+                //MainMenu.Width += 80;
+            }
+                
+            else
+            {
+                ConnectLabel.Visibility = Visibility.Collapsed;
+                SendLabel.Visibility = Visibility.Collapsed;
+
+                //MainMenu.Width -= 80;
+            }
         }
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new SettingPage(_Serial));
+            SendButton.Background = LightGray;
+            ConnectButton.Background = DarkGray;
+
+            settingPage = new SettingPage();
+            MainFrame.Navigate(settingPage);
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                ConnectButton.Background = LightGray;
+                SendButton.Background = DarkGray;
 
+                rFSettingPage = new RFSettingPage(_Serial);
+                MainFrame.Navigate(rFSettingPage);
+            }catch(ArgumentNullException ane)
+            {
+                Debug.WriteLine("시리얼 포트가 열리지 않았습니다.");
+            }catch(Exception ex)
+            {
+
+            }
+            
         }
     }
 }

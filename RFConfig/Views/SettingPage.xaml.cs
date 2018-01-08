@@ -32,16 +32,41 @@ namespace RFConfig.Views
         public Handshake _FlowControl { get; set; }
 
 
+        public SettingPage()
+        {
+
+            InitializeComponent();
+
+            serial = new SerialPort();
+
+
+            PortCombo.Items.Insert(0, MainWindow.ComboBoxItem);
+            PortCombo.SelectedIndex = 0;
+            BaudRateCombo.SelectedIndex = 7;
+            DataBitsCombo.SelectedIndex = 3;
+            ParityCombo.SelectedIndex = 0;
+            StopBitsCombo.SelectedIndex = 0;
+            FlowCtrlCombo.SelectedIndex = 0;
+        }
+
         public SettingPage(SerialPort serial)
         {
+
             InitializeComponent();
 
             this.serial = serial;
+
+            PortCombo.Items.Insert(0, MainWindow.ComboBoxItem);
+            PortCombo.SelectedIndex = 0;
+            BaudRateCombo.SelectedIndex = 7;
+            DataBitsCombo.SelectedIndex = 3;
+            ParityCombo.SelectedIndex = 0;
+            StopBitsCombo.SelectedIndex = 0;
+            FlowCtrlCombo.SelectedIndex = 0;
         }
 
         private void SerialInit()
-        {
-
+        { 
             try
             {
                 serial.PortName = _PortName;
@@ -50,34 +75,67 @@ namespace RFConfig.Views
                 serial.Parity = _Parity;
                 serial.StopBits = _StopBits;
                 serial.Handshake = _FlowControl;
+
                 serial.Open();
-
-                Debug.WriteLine("포트열기 성공!");
-
-                MainWindow.flag = true;
 
                 serial.DataReceived += Serial_DataReceived;
 
-                ((Frame)this.Parent).Navigate(new RFSettingPage());
+                MainWindow.ComboBoxItem = (string)PortCombo.SelectedItem;
+
+                Debug.WriteLine("포트열기 성공!");
+                ////////////////////////////////////////////////////////
+
+                ((MainWindow)App.Current.MainWindow).SendButton.Background = MainWindow.DarkGray;
+                ((MainWindow)App.Current.MainWindow).ConnectButton.Background = MainWindow.LightGray;
+
+                RFSettingPage rFSettingPage = new RFSettingPage(serial);
+
+                NavigationService.Navigate(rFSettingPage);
+                ////////////////////////////////////////////////////////
+
+                MainWindow._Serial.PortName = serial.PortName;
+                MainWindow._Serial.BaudRate = serial.BaudRate;
+                MainWindow._Serial.DataBits = serial.DataBits;
+                MainWindow._Serial.Parity = serial.Parity;
+                MainWindow._Serial.StopBits = serial.StopBits;
+                MainWindow._Serial.Handshake = serial.Handshake;
+
+                //Debug.WriteLine(((Frame)Parent).Name.ToString());
+
+                //((Frame)Parent).Navigate(new RFSettingPage(serial));
             }
             catch
             {
-                Debug.WriteLine("포트열기 실패!");
+                string Message = "포트 연결에 실패 했습니다.";
+                string Title = "경고!";
+                MessageBoxImage image = MessageBoxImage.Warning;
+                MessageBoxButton button = MessageBoxButton.OK;
 
-                MainWindow.flag = false;
+                MessageBox.Show(App.Current.MainWindow,Message, Title,button,image);
+
+                Debug.WriteLine("포트 열기 실패!");
+
+                //MainWindow.flag = false;
             }   
         }
 
         private void Serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string recievedData;
-            recievedData = serial.ReadExisting();
-            Debug.WriteLine("받은 데이터 : " + recievedData);
+            //string recievedData;
+            //recievedData = serial.ReadExisting();
+            //Debug.WriteLine("받은 데이터 : " + recievedData);
         }
 
         private void PortCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            try
+            {
+                _PortName = PortCombo.SelectedItem.ToString();
+            }catch(NullReferenceException nre)
+            {
+                PortCombo.SelectedIndex = 0;
+            }
+            
         }
 
         private void BaudRateCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -179,6 +237,11 @@ namespace RFConfig.Views
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
